@@ -9,10 +9,12 @@ This README would normally document whatever steps are necessary to get applicat
 
 ### How do I get set up? ###
 * How do run
-
-	1.Install all package using command,
-		npm install 
-	2.Server Run by,
-		npm start
-	3.Appliction Link
-		http://localhost:8000/
+	* Install all package using command,
+		`npm install` 
+	* Server Run by
+		`npm start`
+	* Appliction Link
+		`http://localhost:8000/`
+* If you want to change Smtp, Change smtp configuraion in local.config.js
+	`config/local.config.js	`
+	
