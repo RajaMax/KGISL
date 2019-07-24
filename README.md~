@@ -1,0 +1,16 @@
+# README Up and Running with Application #
+
+This README would normally document whatever steps are necessary to get application up and running.
+
+### What is this repository for? ###
+
+* Quick summary
+* Version
+
+### How do I get set up? ###
+* How do run
+
+	1.Install all package using command,
+		npm install 
+	2. Application start by
+		npm start

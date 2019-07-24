@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        JQuery | Set value of input text.
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    </link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('input[type="file"]').change(function (e) {
+                var input = this;
+                var url = $(this).val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                    var reader = new FileReader();
+                    console.log(e.target.result)
+                    reader.onload = function (e) {
+                        $('#img').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+                else {
+                    $('#img').attr('src', '/assets/no_preview.png');
+                }
+            });
+
+        });
+        var file = document.getElementById('image').files[0];
+        var name = document.getElementById('name').value;
+        fd.append('image', file);
+        var xhr = new XMLHttpRequest();
+        xhr.file = file;
+        xhr.addEventListener('progress', function (e) {
+            var done = e.position || e.loaded, total = e.totalSize || e.total;
+            console.log('xhr progress: ' + (Math.floor(done / total * 1000) / 10) + '%');
+        }, false);
+        if (xhr.upload) {
+            xhr.upload.onprogress = function (e) {
+                var done = e.position || e.loaded, total = e.totalSize || e.total;
+                console.log('xhr.upload progress: ' + done + ' / ' + total + ' = ' + (Math.floor(done / total * 1000) / 10) + '%');
+            };
+        }
+        xhr.onreadystatechange = function (e) {
+            if (4 == this.readyState) {
+                console.log(['xhr upload complete', e]);
+                var resdata = JSON.parse(xhr.responseText);
+                alert(" Number of lines Read  :" + resdata[0].lines + "\n" + "Number of records saved:" + resdata[1].saved);
+
+            }
+        };
+        xhr.open('post', '/api/indi', true);
+        xhr.send(fd);
+    </script>
+    <style>
+        .btn {
+            color: white;
+            background-color: #019401;
+            border-color: #019401;
+        }
+
+        td,
+        th {
+            padding: 3px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container text-center">
+        <form method="post" action="/api/user" id="indiform" enctype="multipart/form-data">
+            <br>
+            <div>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <img style='width: 100px;text-align:center' id="img" src="#" alt="your image" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="file" name="image" id="image" style='color: red' />
+                            <br></td>
+
+                    </tr>
+                    <tr>
+                        <td><label for='name'>Name </label></td>
+                        <td>: <input type="text" name="name" id="name" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for='name'>Role </label></td>
+                        <td>: <input type="text" name="role" id="role" /></td>
+                    </tr>
+                    <tr>
+                        <td> <label for='name'>Phone </label></td>
+                        <td>: <input type="text" name="phone" id="phone" /></td>
+                    </tr>
+                    <tr>
+                        <td> <label for='name'>Email </label></td>
+                        <td>: <input type="text" name="email" id="email" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" id="indisubmitbutton" value="Submit" name="upload"
+                                class="btn" id="uploadFile" />
+                        </td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
