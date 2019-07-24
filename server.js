@@ -1,8 +1,4 @@
-//Max-Brands API CodeBase
-//ProjectName : Max-Brands
-//Version : 1.0.0
 
-//include all the packages necessary
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
