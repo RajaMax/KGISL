@@ -1,14 +1,13 @@
 import path from 'path';
-
 let config = {
     web_end_point: "http://192.168.168.94",
     api_end_point: "http://192.168.168.94:8000",
     mongo: {
-        database_name: "test",
-        host: "localhost",
-        port: "27017",
-        username: "",
-        password: ""
+        database_name: "profile",
+        host: "ds239206.mlab.com",
+        port: "39206",
+        username: "raja",
+        password: "raja123"
     },
     logs: {
         path: path.join(__dirname, '../logs'),

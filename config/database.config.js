@@ -13,12 +13,12 @@ const connectToMongoDb = async () => {
     let database_name = config.default.mongo.database_name;
     let connectionString = "";
 
-    if (settings.environment === "local")
-        connectionString = `mongodb://${host}:${port}/${database_name}`;
-    else if(settings.environment === "production")
+    // if (settings.environment === "local")
+    //     connectionString = `mongodb://${host}:${port}/${database_name}`;
+    // else if(settings.environment === "production")
         connectionString = `mongodb://${username}:${password}@${host}:${port}/${database_name}`;
-    else
-        connectionString = `mongodb://${username}:${password}@${host}:${port}/${database_name}`;
+    // else
+    //     connectionString = `mongodb://${username}:${password}@${host}:${port}/${database_name}`;
 console.log(connectionString)
     try {
         await Mongoose.connect(connectionString, {

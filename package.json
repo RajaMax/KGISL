@@ -8,8 +8,6 @@
     "author": "Raja Abinesh",
     "contributors": [],
     "dependencies": {
-        "@ffmpeg-installer/ffmpeg": "^1.0.17",
-        "@types/node": "^7.0.5",
         "body-parser": "^1.18.2",
         "cors": "^2.8.4",
         "express": "^4.16.2",
